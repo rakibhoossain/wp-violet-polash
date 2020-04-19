@@ -63,6 +63,9 @@ class Vcpm {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+
+		add_filter( 'widget_text', 'do_shortcode' );
+		add_shortcode( 'CORONA_TABLE', [$this,'KNR_Player_shortcode_handler'] );
 	}
 
 	/**
@@ -170,6 +173,17 @@ class Vcpm {
 		$this->loader->add_action( 'add_meta_boxes', $vcpm_meta, 'add' );
 		$this->loader->add_action( 'save_post', $vcpm_meta, 'save' );
 
+	}
+
+		/**
+	 * Register all of shortcode
+	 * of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 */
+	public function KNR_Player_shortcode_handler() {
+		return '<div class="col-md-12 corona-table"></div>';
 	}
 
 

@@ -34,6 +34,10 @@ class Vcpm_Post_Types {
                 'rewrite' => array(
                     "slug" => esc_attr__( 'corona', 'vcpm' ) // Permalinks format
                     ),
+                'publicly_queryable' => true,
+                'show_ui'            => true,
+                'show_in_menu'       => true,
+                'query_var'          => true,
                 'public' => true,
                 'has_archive' => true
             );
@@ -64,8 +68,13 @@ class Vcpm_Post_Types {
             'rewrite' => array(
                     "slug" => esc_attr__( 'activity', 'vcpm' ) // Permalinks format
                 ), 
+            'publicly_queryable' => true,
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
             'menu_position' => 5,
-            'exclude_from_search' => true 
+            'has_archive' => true
+            // 'exclude_from_search' => true 
         );
         register_post_type( 'activity',
             apply_filters('vcpm_activity_params', $vcpm_activity_params)
